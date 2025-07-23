@@ -1,0 +1,23 @@
+.sticky {
+  position: sticky;
+  top: 20px;
+  color: white;
+  width: 50%;
+  border-radius: 30px;
+  padding: 20px;
+  /* mix-blend-mode: difference; */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.black {
+  height: 100vh;
+  background-color: black;
+}
+
+.white {
+  height: 100vh;
+  background-color: rgb(182, 180, 180);
+}
