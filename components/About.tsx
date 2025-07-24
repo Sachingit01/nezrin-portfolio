@@ -3,6 +3,34 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 
+const data = [
+  {
+    className: "order-last sm:col-start-3",
+    delay: 0.3,
+    image: "/Nezrin (1).jpeg",
+  },
+  {
+    className: "sm:row-start-2 ",
+    delay: 0.4,
+    image: "/Nezrin (2).jpeg",
+  },
+  {
+    className: "sm:col-span-2 sm:row-start-2 ",
+    delay: 0.5,
+    image: "/Nezrin (3).jpeg",
+  },
+  {
+    className: "sm:col-span-2 sm:row-start-3 ",
+    delay: 0.6,
+    image: "/Nezrin (4).jpeg",
+  },
+  {
+    className: "sm:col-start-3 sm:row-start-3 ",
+    delay: 0.7,
+    image: "/Nezrin (5).jpeg",
+  },
+];
+
 export default function About() {
   return (
     <div className="px-6 md:px-20 py-20 h-auto bg-amber-50 ">
@@ -28,28 +56,13 @@ export default function About() {
           </motion.div>
 
           {/* Animated Images */}
-          {[
-            { className: "order-last sm:col-start-3", delay: 0.3 },
-            { className: "sm:row-start-2 ", delay: 0.4 },
-            {
-              className: "sm:col-span-2 sm:row-start-2 ",
-              delay: 0.5,
-            },
-            {
-              className: "sm:col-span-2 sm:row-start-3 ",
-              delay: 0.6,
-            },
-            {
-              className: "sm:col-start-3 sm:row-start-3 ",
-              delay: 0.7,
-            },
-          ].map((item, i) => (
+          {data.map((item, i) => (
             <motion.div
               key={i}
               className={`${item.className} h-50 rounded-lg w-full`}
             >
               <Image
-                src="https://img.freepik.com/free-photo/tender-feminine-woman-with-blue-eyes-smiles-pleasantly-has-toothy-smile-wears-white-comfortable-sweater-looks-directly-camera-isolated-pink-background_273609-32160.jpg"
+                src={item.image}
                 alt="Gallery"
                 width={300}
                 height={300}

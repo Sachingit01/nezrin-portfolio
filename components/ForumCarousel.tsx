@@ -9,11 +9,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const carouselData = new Array(6).fill({
-  title: "Sachin Satheesh",
+  title: "Money Conclave",
   year: 2025,
   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-  image:
-    "https://images.ctfassets.net/rxqefefl3t5b/3dVXj4QQVBlRl4v9qSGgB5/b61438443702811d186ebb672571f0b5/shutterstock_1620414088.jpeg?fl=progressive&q=80",
+  image: "/Nezrin (6).jpeg",
 });
 
 export default function ForumCarousel() {
@@ -152,18 +151,18 @@ export default function ForumCarousel() {
               }}
               className="bg-white rounded-xl overflow-hidden shadow-lg h-full"
             >
-              <div className="relative h-[400px] group">
+              <div className="relative h-[320px] group">
                 <Image
                   src={item.image}
                   alt={item.title}
-                  width={300}
+                  width={400}
                   height={400}
-                  className="object-cover h-full w-full transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain h-[320] w-full transition-transform duration-500 group-hover:scale-105 absolute top-0 left-0"
                 />
                 <div className="absolute bottom-0 left-0 right-0 top-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 text-white flex flex-col justify-end transition-all duration-300 group-hover:from-black/90">
                   <h3 className="text-lg font-semibold">
                     {item.title}{" "}
-                    <span className="text-sm text-[#b89b55]">{item.year}</span>
+                    <span className="text-sm text-white float-right">{item.year}</span>
                   </h3>
                   <p className="text-sm mt-2 line-clamp-3">{item.desc}</p>
                 </div>
