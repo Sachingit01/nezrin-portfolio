@@ -65,11 +65,11 @@ export default function Navbar() {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: "easeOut" }} 
         className="hidden md:flex fixed top-3 left-1/2 -translate-x-1/2 z-50 px-10 py-4 w-full "
       >
         <div className="flex items-center justify-between gap-4 w-full">
-          <div className="backdrop-blur-md bg-white/20 border border-white/30 shadow-lg rounded-full px-3 py-2 flex items-center justify-between max-w-3xl mx-auto">
+          <div className="backdrop-blur-md bg-white/20 border border-white/30 shadow-sm rounded-full px-3 py-2 flex items-center justify-between max-w-3xl mx-auto">
             <NavigationMenu>
               <NavigationMenuList className="flex gap-4">
                 {navItems.map(({ id, href, label }) => (

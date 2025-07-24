@@ -53,7 +53,7 @@ export default function About() {
                 alt="Gallery"
                 width={300}
                 height={300}
-                className="w-full h-full object-cover grayscale rounded-lg transition duration-300 hover:scale-[1.02]"
+                className="w-full h-full object-cover grayscale rounded-lg transition duration-300 hover:scale-[1.02] hover:grayscale-0"
               />
             </motion.div>
           ))}
