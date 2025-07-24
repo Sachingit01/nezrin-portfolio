@@ -73,7 +73,7 @@ export default function Hero() {
           />
         ))}
         {/* Optional: dark overlay */}
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       <div className="max-w-8xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
@@ -95,14 +95,14 @@ export default function Hero() {
               a
             </motion.span>
             <motion.span variants={textVariants} className="block">
-              <span className="font-normal bg-gradient-to-r from-yellow-100 to-yellow-400 bg-clip-text text-transparent">
+              <span style={{ backgroundImage: 'linear-gradient(90deg, rgba(222, 202, 140, 1) 38%, rgba(188, 159, 88, 1) 73%)' }} className="font-medium bg-clip-text text-transparent">
                 serial entrepreneur
               </span>{" "}
               <span className="text-white">and</span>{" "}
-              <span className="font-normal bg-gradient-to-r from-yellow-100 to-yellow-100 bg-clip-text text-transparent">
+              <span style={{ backgroundImage: 'linear-gradient(90deg, rgba(222, 202, 140, 1) 55%, rgba(188, 159, 68, 1) 100%)' }} className="font-medium bg-gradient-to-r from-yellow-100 to-yellow-100 bg-clip-text text-transparent">
                 educator
               </span>
-              , driven to build,
+              <span>, driven to build,</span>
             </motion.span>
             <motion.span variants={textVariants} className="block">
               lead, and inspire.

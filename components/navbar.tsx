@@ -53,6 +53,14 @@ export default function Navbar() {
 
   return (
     <>
+      <div className="hidden md:block pt-4 pl-8 absolute z-50 top-6">
+        <Link
+          href="/"
+          className="text-2xl font-bold tracking-tight text-gray-800"
+        >
+          Nezrin
+        </Link>
+      </div>
       {/* Desktop Navbar */}
       <motion.header
         initial={{ y: -100, opacity: 0 }}
@@ -61,13 +69,6 @@ export default function Navbar() {
         className="hidden md:flex fixed top-3 left-1/2 -translate-x-1/2 z-50 px-10 py-4 w-full "
       >
         <div className="flex items-center justify-between gap-4 w-full">
-          <Link
-            href="/"
-            className="ml-2 text-2xl font-bold tracking-tight text-gray-800"
-          >
-            Nezrin
-          </Link>
-
           <div className="backdrop-blur-md bg-white/20 border border-white/30 shadow-lg rounded-full px-3 py-2 flex items-center justify-between max-w-3xl mx-auto">
             <NavigationMenu>
               <NavigationMenuList className="flex gap-4">

@@ -76,6 +76,8 @@
   --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
   --sidebar-border: oklch(0.923 0.003 48.717);
   --sidebar-ring: oklch(0.709 0.01 56.259);
+   --font-playfair-display: 'Playfair Display', serif;
+  --font-switzer: 'Switzer', sans-serif;
 }
 
 .dark {
@@ -123,5 +125,12 @@
 html {
   scroll-behavior: smooth;
   cursor: none;
-  font-family: "Remixicon", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair-display);
+}
+
+p {
+  font-family: var(--font-switzer);
 }

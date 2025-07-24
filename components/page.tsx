@@ -7,6 +7,7 @@ import { FaYoutube } from "react-icons/fa";
 import { useRef } from "react";
 
 import { BsArrowUpRightCircle } from "react-icons/bs";
+import SvgNoise from "@/public/noise.svg";
 
 const socialLinks = [
   {
@@ -34,7 +35,7 @@ export default function FollowJourney() {
   const isInView = useInView(ref, { once: true, amount: 0.3 }); // animate only once
 
   return (
-    <section id="follow" className="bg-white py-20 px-5 md:px-20">
+    <section id="follow" className="bg-[#f8f4ea] py-20 px-5 md:px-20">
       <div ref={ref} className="text-start mb-12">
         {/* Title */}
         <motion.h2
@@ -73,16 +74,14 @@ export default function FollowJourney() {
               ease: "easeOut",
               delay: 0.4 + index * 0.2,
             }}
-            style={{
-              backgroundImage: "url(/noise.svg)",
-              backgroundSize: "100px 100px",
-            }}
-            className="flex gap-6 p-6 bg-[#fbf4e9] bg-[length:400px_400px] bg-[image:url('/grains.png')] hover:shadow-md rounded-md h-40 transition duration-300"
+            className="flex gap-6 p-6 bg-[#f2ebdc] bg-noise bg-[length:400px_400px] bg-[image:url('/grains.png')] hover:shadow-md rounded-md h-40 transition duration-300 relative"
           >
+            <SvgNoise className="absolute inset-0" />
             <div className="flex flex-col gap-14 w-full justify-between">
               <div className="flex justify-between">
                 {link.icon}
                 <BsArrowUpRightCircle className="text-[#b89b55] text-3xl" />
+                  
               </div>
               <span className="text-[#b89b55] text-xl">{link.username}</span>
             </div>
@@ -92,3 +91,4 @@ export default function FollowJourney() {
     </section>
   );
 }
+

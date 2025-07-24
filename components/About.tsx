@@ -29,27 +29,23 @@ export default function About() {
 
           {/* Animated Images */}
           {[
-            { className: "order-last sm:col-start-3 bg-green-700", delay: 0.3 },
-            { className: "sm:row-start-2 bg-blue-700", delay: 0.4 },
+            { className: "order-last sm:col-start-3", delay: 0.3 },
+            { className: "sm:row-start-2 ", delay: 0.4 },
             {
-              className: "sm:col-span-2 sm:row-start-2 bg-amber-300",
+              className: "sm:col-span-2 sm:row-start-2 ",
               delay: 0.5,
             },
             {
-              className: "sm:col-span-2 sm:row-start-3 bg-pink-500",
+              className: "sm:col-span-2 sm:row-start-3 ",
               delay: 0.6,
             },
             {
-              className: "sm:col-start-3 sm:row-start-3 bg-cyan-400",
+              className: "sm:col-start-3 sm:row-start-3 ",
               delay: 0.7,
             },
           ].map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: item.delay, duration: 0.6 }}
-              viewport={{ once: true, amount: 0.3 }}
               className={`${item.className} h-50 rounded-lg w-full`}
             >
               <Image
@@ -57,7 +53,7 @@ export default function About() {
                 alt="Gallery"
                 width={300}
                 height={300}
-                className="w-full h-full object-cover grayscale rounded-lg"
+                className="w-full h-full object-cover grayscale rounded-lg transition duration-300 hover:scale-[1.02]"
               />
             </motion.div>
           ))}
@@ -83,7 +79,7 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="text-[#2D2203] text-base font-normal"
+            className="text-[#2D2203] text-base font-normal font-body"
             style={{ fontSize: "1.2rem" }}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima

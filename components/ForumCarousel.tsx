@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -28,10 +28,10 @@ export default function ForumCarousel() {
     },
     breakpoints: {
       "(min-width: 640px)": {
-        slides: { perView: 2, spacing: 24 },
+        slides: { perView: 2, spacing: 14 },
       },
       "(min-width: 1024px)": {
-        slides: { perView: 4, spacing: 32 },
+        slides: { perView: 4, spacing: 22 },
       },
     },
     slideChanged(slider) {
@@ -99,7 +99,7 @@ export default function ForumCarousel() {
                 transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
               },
             }}
-            className="text-lg md:text-xl mb-8 text-[#2D2203] max-w-4xl"
+            className="text-md md:text-lg mb-8 text-[#2D2203] max-w-5xl"
           >
             From speaking at panel discussions to attending high impact
             conferences, these events represent the meaningful conversations and
@@ -109,24 +109,30 @@ export default function ForumCarousel() {
         </motion.div>
 
         {/* Navigation Buttons */}
-        <div className="flex gap-4 mt-2 z-50">
+        <div className="flex gap-7 mt-2 z-50">
           <Button
             variant="ghost"
             size="icon"
-            className="ring-1 ring-[#b89b55] rounded-full disabled:opacity-40 disabled:cursor-not-allowed"
+            className="disabled:opacity-40 disabled:cursor-not-allowed"
             onClick={() => instanceRef.current?.prev()}
             disabled={!loaded || currentSlide === 0}
           >
-            <ChevronLeft className="text-[#b89b55] w-6 h-6" />
+            <ArrowLeftCircle
+              className="text-[#b89b55] stroke-[1.3]"
+              style={{ width: "40px", height: "40px" }}
+            />
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="ring-1 ring-[#b89b55] rounded-full disabled:opacity-40 disabled:cursor-not-allowed"
+            className="disabled:opacity-40 disabled:cursor-not-allowed"
             onClick={() => instanceRef.current?.next()}
             disabled={!loaded || currentSlide >= maxSlide}
           >
-            <ChevronRight className="text-[#b89b55] w-6 h-6" />
+            <ArrowRightCircle
+              className="text-[#b89b55] stroke-[1.3]"
+              style={{ width: "40px", height: "40px" }}
+            />
           </Button>
         </div>
       </motion.div>
