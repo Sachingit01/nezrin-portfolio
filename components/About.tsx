@@ -60,6 +60,10 @@ export default function About() {
             <motion.div
               key={i}
               className={`${item.className} h-50 rounded-lg w-full`}
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: item.delay }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <Image
                 src={item.image}
