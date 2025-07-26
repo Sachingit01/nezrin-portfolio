@@ -1,9 +1,8 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-// import { ArrowRightCircle } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import ArrowRightCircle from "@/public/arrow-right-circle.svg";
 
 const ventures = [
@@ -58,6 +57,18 @@ export default function EntrepreneurSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
 
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize(); // initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section className="px-6 md:px-16 py-20 bg-white text-[#1d1d1d]" ref={ref}>
       <div className="max-w-10xl mx-auto flex flex-col md:flex-row gap-10 items-start justify-between">
@@ -97,14 +108,19 @@ export default function EntrepreneurSection() {
               animate={isInView ? "visible" : "hidden"}
               variants={cardVariants}
               transition={{
-                duration: 0.6,
+                duration: 0.8,
                 ease: "easeOut",
-                delay: idx * 0.2 + 0.6, // Added base delay so cards animate after text
+                delay: 1.2 + idx * 0.15,
               }}
-              whileHover="hover"
-              className="relative bg-white/30 backdrop-blur-md border border-[#e8c98bb1] rounded-xl p-5 overflow-hidden group h-60 flex flex-col justify-start"
+              whileHover={!isMobile ? "hover" : undefined}
+              onClick={() => {
+                if (isMobile) {
+                  setActiveIndex(activeIndex === idx ? null : idx);
+                }
+              }}
+              className="relative bg-white/30 backdrop-blur-md border border-[#e8c98bb1] rounded-xl p-5 overflow-hidden group h-60 flex flex-col justify-start cursor-pointer"
             >
-              {/* Icon Top Left */}
+              {/* Logo */}
               <div className="w-15 h-15 mb-4 rounded-full border-2 border-[#d1b57b] flex items-center justify-center overflow-hidden">
                 <Image
                   src={venture.logo}
@@ -125,7 +141,7 @@ export default function EntrepreneurSection() {
                 </p>
               </div>
 
-              {/* Arrow Bottom Left */}
+              {/* Arrow */}
               <div className="absolute bottom-4 left-4 text-[#b89b55] text-[25px] z-10">
                 <ArrowRightCircle
                   width={32}
@@ -135,14 +151,23 @@ export default function EntrepreneurSection() {
                 />
               </div>
 
-              {/* Hover Description Popup */}
+              {/* Description (hover or click) */}
               <motion.div
                 initial={{ y: 100, opacity: 0 }}
+                animate={
+                  !isMobile
+                    ? undefined
+                    : activeIndex === idx
+                    ? { y: 0, opacity: 1 }
+                    : { y: 100, opacity: 0 }
+                }
                 variants={{
                   hover: { y: 0, opacity: 1 },
                 }}
                 transition={{ duration: 0.4 }}
-                className="absolute bottom-0 left-0 w-full bg-white/90 text-sm text-[#1d1d1d] px-4 py-4 rounded-b-xl z-20"
+                className={`absolute bottom-0 left-0 w-full bg-white/90 text-sm text-[#1d1d1d] px-4 py-4 rounded-b-xl z-20 ${
+                  isMobile && activeIndex !== idx ? "hidden" : ""
+                }`}
               >
                 {venture.description}
               </motion.div>
