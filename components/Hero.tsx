@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Laurel from "@/components/Laurel";
 
 const images = ["/image.png", "/image.png", "/image.png"]; // Add your image paths here
+const mobImages=["/Nezrin_09.jpg"]
 
 const labels = [
   {
@@ -60,7 +61,7 @@ export default function Hero() {
     >
       {/* Background Carousel */}
       <div className="absolute inset-0 z-0">
-        {images.map((img, index) => (
+        {(window.innerWidth < 768 ? mobImages : images).map((img, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0 }}
@@ -73,7 +74,7 @@ export default function Hero() {
           />
         ))}
         {/* Optional: dark overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/10" />
       </div>
 
       <div className="max-w-8xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
@@ -95,11 +96,23 @@ export default function Hero() {
               a
             </motion.span>
             <motion.span variants={textVariants} className="block">
-              <span style={{ backgroundImage: 'linear-gradient(90deg, rgba(222, 202, 140, 1) 38%, rgba(188, 159, 88, 1) 73%)' }} className="font-medium bg-clip-text text-transparent">
+              <span
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, rgba(222, 202, 140, 1) 38%, rgba(188, 159, 88, 1) 73%)",
+                }}
+                className="font-medium bg-clip-text text-transparent"
+              >
                 serial entrepreneur
               </span>{" "}
               <span className="text-white">and</span>{" "}
-              <span style={{ backgroundImage: 'linear-gradient(90deg, rgba(222, 202, 140, 1) 55%, rgba(188, 159, 68, 1) 100%)' }} className="font-medium bg-gradient-to-r from-yellow-100 to-yellow-100 bg-clip-text text-transparent">
+              <span
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, rgba(222, 202, 140, 1) 55%, rgba(188, 159, 68, 1) 100%)",
+                }}
+                className="font-medium bg-gradient-to-r from-yellow-100 to-yellow-100 bg-clip-text text-transparent"
+              >
                 educator
               </span>
               <span>, driven to build,</span>

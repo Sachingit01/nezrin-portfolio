@@ -1,30 +1,29 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { RxLinkedinLogo } from "react-icons/rx";
-import { FaInstagram } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
 import { useRef } from "react";
-
-import { BsArrowUpRightCircle } from "react-icons/bs";
+import ArrowRightCircle from "@/public/ArrowUpRightCircle.svg";
+import Youtube from "@/public/Youtube.svg";
+import Instagram from "@/public/instagram.svg";
+import LinkedIn from "@/public/linkedIn.svg";
 
 const socialLinks = [
   {
     platform: "Instagram",
     username: "@dr.nezrin_midhilaj",
-    icon: <FaInstagram className="text-[#b89b55]" size={30} />,
+    icon: <Instagram className="text-[#b89b55]" size={30} />,
     url: "https://instagram.com/dr.nezrin_midhilaj",
   },
   {
     platform: "LinkedIn",
     username: "Nezrin Midhlaj",
-    icon: <RxLinkedinLogo className="text-[#b89b55]" size={30} />,
+    icon: <LinkedIn className="text-[#b89b55]" size={30} />,
     url: "https://www.linkedin.com/in/nezrinmidhlaj",
   },
   {
     platform: "YouTube",
     username: "@nezrinmidhlaj2496",
-    icon: <FaYoutube className="text-[#b89b55]" size={30} />,
+    icon: <Youtube className="text-[#b89b55]" size={20} />,
     url: "https://www.youtube.com/@nezrinmidhlaj2496",
   },
 ];
@@ -59,7 +58,7 @@ export default function FollowJourney() {
       </div>
 
       {/* Social Links */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
         {socialLinks.map((link, index) => (
           <motion.a
             key={index}
@@ -77,12 +76,12 @@ export default function FollowJourney() {
               backgroundImage: "url(/noise.svg)",
               backgroundSize: "100px 100px",
             }}
-            className="flex gap-6 p-6 bg-[#fbf4e9] bg-[length:400px_400px] bg-[image:url('/grains.png')] hover:shadow-md rounded-md h-40 transition duration-300"
+            className="flex gap-6 p-6 bg-[#fbf4e9] bg-[length:400px_400px] bg-[image:url('/grains.png')] hover:shadow-md rounded-md h-45 transition duration-300"
           >
             <div className="flex flex-col gap-14 w-full justify-between">
               <div className="flex justify-between">
                 {link.icon}
-                <BsArrowUpRightCircle className="text-[#b89b55] text-3xl" />
+                <ArrowRightCircle className="text-[#b89b55] text-3xl" />
               </div>
               <span className="text-[#b89b55] text-xl">{link.username}</span>
             </div>

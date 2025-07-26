@@ -1,90 +1,152 @@
 "use client";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import Laurel from "@/components/Laurel";
 
-import { motion, useInView } from "framer-motion";
-import { RxLinkedinLogo } from "react-icons/rx";
-import { FaInstagram } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { useRef } from "react";
+const images = ["/image.png", "/image.png", "/image.png"]; // Add your image paths here
 
-import { BsArrowUpRightCircle } from "react-icons/bs";
-
-const socialLinks = [
+const labels = [
   {
-    platform: "Instagram",
-    username: "@dr.nezrin_midhilaj",
-    icon: <FaInstagram className="text-[#b89b55]" size={30} />,
-    url: "https://instagram.com/dr.nezrin_midhilaj",
+    text: "Empowering minds",
+    top: "top-[20%]",
+    left: "left-[15%]",
   },
   {
-    platform: "LinkedIn",
-    username: "Nezrin Midhlaj",
-    icon: <RxLinkedinLogo className="text-[#b89b55]" size={30} />,
-    url: "https://www.linkedin.com/in/nezrinmidhlaj",
+    text: "Building futures",
+    top: "top-[80%]",
+    left: "left-[8%]",
   },
   {
-    platform: "YouTube",
-    username: "@nezrinmidhlaj2496",
-    icon: <FaYoutube className="text-[#b89b55]" size={30} />,
-    url: "https://www.youtube.com/@nezrinmidhlaj2496",
+    text: "Creating impact",
+    top: "top-[45%]",
+    left: "left-[75%]",
   },
 ];
 
-export default function FollowJourney() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 }); // animate only once
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const textVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 },
+  },
+};
+
+export default function Hero() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 4000); // 4 seconds per image
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section id="follow" className="bg-[#f8f4ea] py-20 px-5 md:px-20">
-      <div ref={ref} className="text-start mb-12">
-        {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-3xl md:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#b89b55] to-[#f2d273]"
-        >
-          Follow <span>My Journey</span>
-        </motion.h2>
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="mt-4 text-[#2D2203] text-md md:text-lg"
-        >
-          See what I’m building, sharing, and inspiring across social media
-          platforms.
-        </motion.p>
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 relative overflow-hidden py-25"
+    >
+      {/* Common Background Carousel for entire section */}
+      <div className="absolute inset-0 z-0">
+        {images.map((img, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: current === index ? 1 : 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 bg-center bg-no-repeat bg-contain md:bg-cover"
+            style={{
+              backgroundImage: `url(${img})`,
+            }}
+          />
+        ))}
+        {/* Optional: dark overlay */}
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      {/* Social Links */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {socialLinks.map((link, index) => (
-          <motion.a
-            key={index}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{
-              duration: 0.6,
-              ease: "easeOut",
-              delay: 0.4 + index * 0.2,
-            }}
-            style={{backgroundImage: 'url(/noise.svg)', backgroundSize: '100px 100px', opacity: 0.5}}
-            className="flex gap-6 p-6 z-0 bg-[rgba(242,235,220,0.5)] bg-[length:400px_400px] hover:shadow-md rounded-md h-40 transition duration-300"
+      <div className="max-w-8xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+        {/* LEFT */}
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-6"
+        >
+          <motion.h1
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-3xl sm:text-4xl md:text-5xl font-normal leading-snug text-white"
           >
-            <div className="flex flex-col gap-14 w-full justify-between">
-              <div className="flex justify-between">
-                {link.icon}
-                <BsArrowUpRightCircle className="text-[#b89b55] text-3xl" />
-              </div>
-              <span className="text-[#b89b55] text-xl">{link.username}</span>
-            </div>
-          </motion.a>
-        ))}
+            <motion.span variants={textVariants} className="block">
+              I&apos;m <span className="text-white">Dr. Nezrin Midhlaj</span> —
+              a
+            </motion.span>
+            <motion.span variants={textVariants} className="block">
+              <span
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, rgba(222, 202, 140, 1) 38%, rgba(188, 159, 88, 1) 73%)",
+                }}
+                className="font-medium bg-clip-text text-transparent"
+              >
+                serial entrepreneur
+              </span>{" "}
+              <span className="text-white">and</span>{" "}
+              <span
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, rgba(222, 202, 140, 1) 55%, rgba(188, 159, 68, 1) 100%)",
+                }}
+                className="font-medium bg-gradient-to-r from-yellow-100 to-yellow-100 bg-clip-text text-transparent"
+              >
+                educator
+              </span>
+              <span>, driven to build,</span>
+            </motion.span>
+            <motion.span variants={textVariants} className="block">
+              lead, and inspire.
+            </motion.span>
+          </motion.h1>
+
+          <div className="flex items-center gap-3 mt-4">
+            <Laurel />
+          </div>
+        </motion.div>
+
+        {/* RIGHT */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative flex items-center justify-center md:justify-end"
+        >
+          <div className="w-full h-100 relative">
+            {labels.map((label, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: [0, -8, 0] }}
+                transition={{ delay: 0.7 + index * 0.2, duration: 2 }}
+                className={`absolute ${label.top} ${label.left} text-white backdrop-blur-md bg-white/50 border border-white text-sm md:text-base px-4 md:px-6 py-2 rounded-full shadow-lg text-nowrap`}
+              >
+                {label.text}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

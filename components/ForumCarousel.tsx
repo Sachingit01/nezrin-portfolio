@@ -162,7 +162,9 @@ export default function ForumCarousel() {
                 <div className="absolute bottom-0 left-0 right-0 top-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 text-white flex flex-col justify-end transition-all duration-300 group-hover:from-black/90">
                   <h3 className="text-lg font-semibold">
                     {item.title}{" "}
-                    <span className="text-sm text-white float-right">{item.year}</span>
+                    <span className="text-sm text-white float-right">
+                      {item.year}
+                    </span>
                   </h3>
                   <p className="text-sm mt-2 line-clamp-3">{item.desc}</p>
                 </div>
