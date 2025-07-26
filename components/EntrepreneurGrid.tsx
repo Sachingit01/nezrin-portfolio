@@ -117,7 +117,7 @@ export default function EntrepreneurSection() {
 
               {/* Title & Subtitle */}
               <div>
-                <h3 className="text-base font-semibold text-[#1d1d1d]">
+                <h3 className="text-normal font-semibold font-playfair text-[#1d1d1d]">
                   {venture.title}
                 </h3>
                 <p className="text-gray-700 text-sm text-[14px]">
