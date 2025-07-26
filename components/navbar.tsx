@@ -108,7 +108,7 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex md:hidden fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-gray-200 px-4 py-3 bg-white"
+        className="flex md:hidden fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-transparent px-4 py-3 bg-transparent"
       >
         <div className="flex justify-between items-center w-full">
           <Link
@@ -148,7 +148,7 @@ export default function Navbar() {
                         className={clsx(
                           "text-lg font-normal py-3 w-full transition-all duration-300 text-[#b89b55]",
                           activeSection === id
-                            ? "font-semibold"
+                            ? "font-semibold pl-5 "
                             : "hover:text-[#b89b55]"
                         )}
                       >
