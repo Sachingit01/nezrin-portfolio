@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Laurel from "@/components/Laurel";
 
 const images = ["/image.png", "/image.png", "/image.png"]; // Add your image paths here
-const mobImages=["/Nezrin_09.jpg"]
+const mobImages = ["/Nezrin_09.jpg"];
 
 const labels = [
   {
@@ -61,7 +61,7 @@ export default function Hero() {
     >
       {/* Background Carousel */}
       <div className="absolute inset-0 z-0">
-        {(window.innerWidth < 768 ? mobImages : images).map((img, index) => (
+        {images.map((img, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0 }}

@@ -4,6 +4,7 @@
 // import Laurel from "@/components/Laurel";
 
 // const images = ["/image.png", "/image.png", "/image.png"]; // Add your image paths here
+// const mobImages=["/Nezrin_09.jpg"]
 
 // const labels = [
 //   {
@@ -58,22 +59,22 @@
 //       id="home"
 //       className="min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 relative overflow-hidden py-25"
 //     >
-//       {/* Common Background Carousel for entire section */}
+//       {/* Background Carousel */}
 //       <div className="absolute inset-0 z-0">
-//         {images.map((img, index) => (
+//         {(window.innerWidth < 768 ? mobImages : images).map((img, index) => (
 //           <motion.div
 //             key={index}
 //             initial={{ opacity: 0 }}
 //             animate={{ opacity: current === index ? 1 : 0 }}
 //             transition={{ duration: 1 }}
-//             className="absolute inset-0 bg-center bg-no-repeat bg-contain md:bg-cover"
+//             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
 //             style={{
 //               backgroundImage: `url(${img})`,
 //             }}
 //           />
 //         ))}
 //         {/* Optional: dark overlay */}
-//         <div className="absolute inset-0 bg-black/20" />
+//         <div className="absolute inset-0 bg-black/10" />
 //       </div>
 
 //       <div className="max-w-8xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
@@ -133,7 +134,7 @@
 //           transition={{ duration: 0.8 }}
 //           className="relative flex items-center justify-center md:justify-end"
 //         >
-//           <div className="w-full h-100 relative">
+//           <div className="w-screen h-100">
 //             {labels.map((label, index) => (
 //               <motion.div
 //                 key={index}
@@ -151,12 +152,16 @@
 //     </section>
 //   );
 // }
+
+
+
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      
+      Test  File
     </div>
   )
 }
+
