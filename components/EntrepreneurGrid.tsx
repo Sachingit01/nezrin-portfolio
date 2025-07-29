@@ -165,11 +165,21 @@ export default function EntrepreneurSection() {
                   hover: { y: 0, opacity: 1 },
                 }}
                 transition={{ duration: 0.4 }}
-                className={`absolute bottom-0 left-0 w-full bg-white/90 text-sm text-[#1d1d1d] px-4 py-4 rounded-b-xl z-20 ${
+                className={`absolute top-0 left-0 h-full w-full bg-[#f2d273] text-black text-sm px-4 py-4 rounded-b-xl z-20 ${
                   isMobile && activeIndex !== idx ? "hidden" : ""
                 }`}
               >
                 {venture.description}
+                <div className="flex items-center justify-start mt-4">
+                  <a
+                    href=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 mb-1"
+                  >
+                    know more
+                  </a>
+                </div>
               </motion.div>
             </motion.div>
           ))}
