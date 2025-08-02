@@ -1,10 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+
 import { motion } from "framer-motion";
 import Laurel from "@/components/Laurel";
-
-const images = ["/image.png", "/image.png", "/image.png"]; // Add your image paths here
-const mobImages = ["/Nezrin_09.jpg"];
 
 const labels = [
   {
@@ -45,15 +42,6 @@ const textVariants = {
 };
 
 export default function Hero() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 4000); // 4 seconds per image
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section
       id="home"
@@ -61,18 +49,16 @@ export default function Hero() {
     >
       {/* Background Carousel */}
       <div className="absolute inset-0 z-0">
-        {images.map((img, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: current === index ? 1 : 0 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(${img})`,
-            }}
-          />
-        ))}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${"/image.png"})`,
+          }}
+        />
+
         {/* Optional: dark overlay */}
         <div className="absolute inset-0 bg-black/10" />
       </div>

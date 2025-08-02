@@ -4,6 +4,7 @@ import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import CustomCursor from "@/components/CustomCursor";
+import LenisProvider from "@/components/LenisProvider";
 
 // const playfairDisplay = Playfair_Display({
 //   weight: ["400", "500", "600", "700", "800", "900"],
@@ -31,7 +32,7 @@ export default function RootLayout({
       <body className={`${playfair.variable} antialiased`}>
         <CustomCursor />
         <Navbar />
-        {children}
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );

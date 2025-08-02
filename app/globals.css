@@ -139,3 +139,6 @@ h6 {
 p {
   font-family: var(--font-switzer);
 }
+body,html {
+  scroll-behavior: auto;
+}
